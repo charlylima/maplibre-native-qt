@@ -60,6 +60,9 @@ qt_internal_add_plugin(QGeoServiceProviderFactoryMapLibreGLPlugin
         "$<BUILD_INTERFACE:mbgl-vendor-csscolorparser>"
 )
 
+# temporary workaround, I had some linker issues with libicu.
+target_link_libraries(QGeoServiceProviderFactoryMapLibreGLPlugin PRIVATE /usr/lib/x86_64-linux-gnu/libicuuc.so)
+
 set_property(TARGET QGeoServiceProviderFactoryMapLibreGLPlugin PROPERTY INTERFACE_QT_MAJOR_VERSION 6)
 
 qt_add_resources(plugin_resource_files resources/maplibregl.qrc)
